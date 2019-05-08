@@ -90,7 +90,7 @@ public class Test extends Component implements Accessible{
         f.setLayout(null);  
         f.setVisible(true);  
      
-    Button b2=new Button("Click Here");  
+    Button b2=new Button("Translate");  
     b2.setBounds(200,200,80,30);  
     f.add(b2);  
     f.setSize(400,400);  
