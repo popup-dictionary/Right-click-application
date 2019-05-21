@@ -26,7 +26,7 @@ public class Test extends Component implements Accessible{
 
 
 
-   
+  public static String enteredWord;
   
   
   
@@ -42,6 +42,7 @@ public class Test extends Component implements Accessible{
           private JLabel label1;
         
          
+          @Override
        public void actionPerformed(ActionEvent e) {
           System.out.println("In here");
           trayIcon.displayMessage("Pop Up Dictionary", "Please enter a word", TrayIcon.MessageType.INFO);
@@ -49,7 +50,7 @@ public class Test extends Component implements Accessible{
           JFrame f=new JFrame("Pop Up Dictionary");  
           
     final TextField tf=new TextField();  
-    tf.setBounds(100,50, 150,20);  
+    tf.setBounds(100,50, 150,20);
     Button b1=new Button("Find Definition");    
     b1.setBounds(100,100,200,30); 
     
@@ -59,7 +60,8 @@ public class Test extends Component implements Accessible{
  
     Label l1, l2;  
     l1=new Label("Word Definition");  
-    l1.setBounds(50,150, 100,30); 
+    l1.setBounds(50,150, 100,30);
+    l1.setSize(300, 50);               // Tried to add size to the label @Usama
     l2=new Label("Translate:");  
     l2.setBounds(50,200, 60,30);  
     f.add(l1); f.add(l2);  
@@ -133,9 +135,11 @@ public class Test extends Component implements Accessible{
     
     b1.addActionListener(new ActionListener(){  
     public void actionPerformed(ActionEvent e){
-      
-  
-            tf.setText("Find Definition");  
+        Dictionary dic=new Dictionary();
+        enteredWord=tf.getText();
+        String def=dic.wordsearch(enteredWord);
+        
+        l1.setText(def);
     }  
     }); 
     
